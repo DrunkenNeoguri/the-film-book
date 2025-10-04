@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals.js";
 import { router } from "./router/router.tsx";
 
 const rootElement = document.getElementById("app");
+
 if (rootElement && !rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(

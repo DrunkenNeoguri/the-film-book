@@ -1,6 +1,5 @@
 import {
   Outlet,
-  RouterProvider,
   createRootRoute,
   createRoute,
   createRouter,
