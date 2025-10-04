@@ -1,16 +1,11 @@
-import {
-  Outlet,
-  createRootRoute,
-  createRoute,
-  createRouter,
-} from "@tanstack/react-router";
+import { Outlet, createRootRoute, createRoute, createRouter } from '@tanstack/react-router';
 
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import Main from "../pages/main";
-import Film from "../pages/film";
-import Detail from "../pages/film/detail";
-import Upload from "../pages/film/develop/upload";
-import Edit from "../pages/film/develop/edit";
+import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
+import Main from '../pages/main';
+import Film from '../pages/film';
+import Detail from '../pages/film/detail';
+import Upload from '../pages/film/develop/upload';
+import Edit from '../pages/film/develop/edit';
 
 // 최상위 라우팅인데 Head같은 역할을 해주는 것 같지만 차후에 알아보도록 하자.
 const rootRoute = createRootRoute({
@@ -26,20 +21,20 @@ const rootRoute = createRootRoute({
 // 메인 페이지
 const index = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/",
+  path: '/',
   component: Main,
 });
 
 // 필름 라우팅 (그룹화)
 const film = createRoute({
   getParentRoute: () => rootRoute,
-  path: "film",
+  path: 'film',
 });
 
 // 필름 리스트 페이지
 const filmIndex = createRoute({
   getParentRoute: () => film,
-  path: "/",
+  path: '/',
   component: Film,
 });
 
@@ -49,7 +44,7 @@ const filmIndex = createRoute({
 const detail = createRoute({
   getParentRoute: () => film,
   loader: ({ params }) => {},
-  path: "$filmId",
+  path: '$filmId',
   component: Detail,
 });
 
@@ -58,14 +53,14 @@ const detail = createRoute({
 // 필름 현상 페이지 (업로드)
 const develop = createRoute({
   getParentRoute: () => film,
-  path: "develop",
+  path: 'develop',
   component: Upload,
 });
 
 // 필름 수정 페이지
 const edit = createRoute({
   getParentRoute: () => film,
-  path: "develop/$filmId",
+  path: 'develop/$filmId',
   component: Edit,
 });
 
@@ -80,7 +75,7 @@ const routeTree = rootRoute.addChildren([
 export const router = createRouter({
   routeTree,
   context: {},
-  defaultPreload: "intent",
+  defaultPreload: 'intent',
   scrollRestoration: true,
   defaultStructuralSharing: true,
   defaultPreloadStaleTime: 0,
