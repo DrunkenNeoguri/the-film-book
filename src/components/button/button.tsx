@@ -1,13 +1,37 @@
-import { ButtonHTMLAttributes } from 'react';
+import { Link } from '@tanstack/react-router';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 
-export type Props = ButtonHTMLAttributes<HTMLButtonElement>;
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  mode: 'button';
+};
 
-// *MEMO: Link 버튼도 동일하게 쓸 거기 때문에 Link와 Button을 어떻게 분리할지에 대해서도 생각해보도록 합시다.
-export function Button({ className, children, ...rest }: Props) {
+type LinkProps = typeof Link & {
+  mode: 'link';
+  className?: string;
+  children?: ReactNode;
+  to: string;
+};
+
+export type Props = ButtonProps | LinkProps;
+
+// *MEMO: Button으로 공용화하되, mode로 타입을 분리해서 쓰도록 정의.
+// *MEMO: Link에서 추가로 분리할 부분은 하단에 분리하도록 하고, 차후에 좀 더 리팩토링하여 간결화할 수 있다면 하도록 하자.
+export function Button({ mode, className, children, ...rest }: Props) {
   const buttonStyle = 'flex px-4 py-2 rounded-l justify-center items-center w-full ' + className;
-  return (
-    <button className={buttonStyle} {...rest}>
-      {children}
-    </button>
-  );
+
+  if (mode === 'button') {
+    return (
+      <button className={buttonStyle} {...rest}>
+        {children}
+      </button>
+    );
+  } else if (mode === 'link') {
+    const { to } = { ...rest } as LinkProps;
+
+    return (
+      <Link className={buttonStyle} to={to}>
+        {children}
+      </Link>
+    );
+  }
 }
