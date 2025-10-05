@@ -1,12 +1,12 @@
-import { MainBanner, MainDescription, MovePageArea } from './components';
+import { MainBanner, MainDescription, LinkArea } from './components';
 
-export function Main() {
+export default function Main() {
   return (
     <main>
       <section>
         <MainBanner />
         <MainDescription />
-        <MovePageArea />
+        <LinkArea />
       </section>
     </main>
   );
