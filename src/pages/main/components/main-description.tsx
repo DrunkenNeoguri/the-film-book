@@ -1,4 +1,4 @@
-export default function MainDescription() {
+export function MainDescription() {
   return (
     <div>
       <h1>The Film Book</h1>

@@ -1,3 +1,3 @@
-export default function MainBanner() {
+export function MainBanner() {
   return <div />;
 }

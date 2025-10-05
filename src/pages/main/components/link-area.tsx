@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router';
 
-export default function MovePageArea() {
+export function LinkArea() {
   return (
     <div>
       {/* 차후에 버튼화하기 */}
