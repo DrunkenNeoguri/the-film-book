@@ -10,8 +10,8 @@ import Main from '../pages/main';
 // 최상위 라우팅인데 Head같은 역할을 해주는 것 같지만 차후에 알아보도록 하자.
 const rootRoute = createRootRoute({
   component: () => (
-    <div className="flex w-full h-full justify-center items-center bg-[#1a1a1a]">
-      <div className="flex w-full max-w-sm h-dvh bg-[#19181D]">
+    <div className="flex w-full h-full overflow-hidden justify-center items-center bg-[#1a1a1a]">
+      <div className="flex w-full max-w-sm h-dvh overflow-scroll bg-[#19181D]">
         {/* Outlet에서 하위 컴포넌트들이 렌더링 됨 */}
         <Outlet />
         <TanStackRouterDevtools />
