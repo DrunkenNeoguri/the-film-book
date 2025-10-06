@@ -1,19 +1,22 @@
 import { Outlet, createRootRoute, createRoute, createRouter } from '@tanstack/react-router';
 
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
-import Main from '../pages/main';
 import Film from '../pages/film';
 import Detail from '../pages/film/detail';
 import Upload from '../pages/film/develop/upload';
 import Edit from '../pages/film/develop/edit';
+import Main from '../pages/main';
 
 // 최상위 라우팅인데 Head같은 역할을 해주는 것 같지만 차후에 알아보도록 하자.
 const rootRoute = createRootRoute({
   component: () => (
-    <>
-      <Outlet />
-      <TanStackRouterDevtools />
-    </>
+    <div className="flex w-full h-full justify-center items-center bg-[#1a1a1a]">
+      <div className="flex w-full max-w-sm h-dvh bg-[#19181D]">
+        {/* Outlet에서 하위 컴포넌트들이 렌더링 됨 */}
+        <Outlet />
+        <TanStackRouterDevtools />
+      </div>
+    </div>
   ),
 });
 
@@ -43,7 +46,9 @@ const filmIndex = createRoute({
 // 필름 상세 페이지
 const detail = createRoute({
   getParentRoute: () => film,
-  loader: ({ params }) => {},
+  loader: ({ params }) => {
+    return params.filmId;
+  },
   path: '$filmId',
   component: Detail,
 });
@@ -60,6 +65,9 @@ const develop = createRoute({
 // 필름 수정 페이지
 const edit = createRoute({
   getParentRoute: () => film,
+  loader: ({ params }) => {
+    return params.filmId;
+  },
   path: 'develop/$filmId',
   component: Edit,
 });
