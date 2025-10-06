@@ -1,3 +1,13 @@
+import { MainBanner, MainDescription, LinkArea } from './components';
+
 export default function Main() {
-  return <section>main</section>;
+  return (
+    <main>
+      <section>
+        <MainBanner />
+        <MainDescription />
+        <LinkArea />
+      </section>
+    </main>
+  );
 }
