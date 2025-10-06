@@ -1,10 +1,10 @@
 //*MEMO: 기능 역할과 디자인은 서로 별개로 둘 것.
 //*MEMO: 그런 의미에서 외부에서 기능 사항을 받아서 반영할 것.
 
-import { Months } from '../../utils/constants';
+import { MONTHS } from '../../utils/constants';
 
 type Props = {
-  month: (typeof Months)[number];
+  month: (typeof MONTHS)[number];
 };
 
 export default function ImageUploader({ month }: Props) {
