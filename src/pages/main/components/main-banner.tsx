@@ -1,3 +1,7 @@
 export function MainBanner() {
-  return <div />;
+  return (
+    <div>
+      <img src="img-main-banner.webp" />
+    </div>
+  );
 }
