@@ -1,3 +1,21 @@
+import ImageUploader from '../../../../components/image-uploader/image-uploader';
+import { MONTHS } from '../../../../utils/constants';
+import { ButtonArea } from '../components/button-area';
+import { DevelopLayout } from '../layout';
+
 export default function Upload() {
-  return <section>upload</section>;
+  //*MEMO: 제목은 필요없음. ~ 님의 필름 이라고 남길것.
+  return (
+    <DevelopLayout>
+      <p className="text-gray-50 text-base px-4 py-6 whitespace-pre-wrap">
+        {`각 이미지 칸에 올 한 해, 1월부터 12월까지의\n발자취를 남겨볼까요?`}
+      </p>
+      <div className="grid grid-cols-2 gap-4 px-4">
+        {MONTHS.map(month => {
+          return <ImageUploader key={month} month={month} />;
+        })}
+      </div>
+      <ButtonArea />
+    </DevelopLayout>
+  );
 }
