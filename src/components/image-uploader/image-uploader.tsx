@@ -14,7 +14,12 @@ export default function ImageUploader({ month }: Props) {
       <label htmlFor={month} className="flex justify-around items-center cursor-pointer w-full">
         <AddIcon width={48} height={48} className="mb-2" />
       </label>
-      <input id={month} type="file" className="hidden" />
+      <input
+        id={month}
+        type="file"
+        accept="image/jpeg, image/jpg, image/png, image/webp"
+        className="hidden"
+      />
       <div className="flex absolute bottom-0 w-full justify-center items-center rounded-b-lg bg-amber-400 text-[#19181D] text-semibold text-base">
         <span>{month}</span>
       </div>
