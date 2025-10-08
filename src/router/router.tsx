@@ -11,7 +11,7 @@ import Main from '../pages/main';
 const rootRoute = createRootRoute({
   component: () => (
     <div className="flex w-full h-full overflow-hidden justify-center items-center bg-[#1a1a1a]">
-      <div className="flex w-full max-w-sm h-dvh overflow-scroll bg-[#19181D]">
+      <div className="flex w-full max-w-sm h-dvh overflow-hidden bg-[#19181D]">
         {/* Outlet에서 하위 컴포넌트들이 렌더링 됨 */}
         <Outlet />
         <TanStackRouterDevtools />
