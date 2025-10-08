@@ -1,25 +1,24 @@
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import { ALLOWED_IMAGE_EXTENSION } from '../../utils/constants';
 
-export function useImageUpload() {
-  const [imageFile, setImageFile] = useState<File | null>();
-  const [previewImageUrl, setPreviewImageUrl] = useState<string>();
+type Props = {
+  existingImage?: File;
+  existingImageUrl?: string;
+};
 
-  const loadImageFile = (e: ChangeEvent<HTMLInputElement>) => {
-    const selectedImage = e.target.files?.[0];
+export function useImageUpload({ existingImage, existingImageUrl }: Props) {
+  const [imageFile, setImageFile] = useState<File | null>(existingImage ?? null);
+  const [previewImageUrl, setPreviewImageUrl] = useState<string | undefined>(existingImageUrl);
 
-    if (!selectedImage) {
-      return;
+  const loadImageFile = (file: File) => {
+    if (!ALLOWED_IMAGE_EXTENSION.includes(file?.type)) {
+      throw new Error('이미지 파일은 jpg, jpeg, png, webp만 가능합니다.');
     }
 
-    if (!ALLOWED_IMAGE_EXTENSION.includes(selectedImage?.type)) {
-      return '이미지 파일은 jpg, jpeg, png, webp만 가능합니다.';
-    }
-
-    const selectedImageUrl = URL.createObjectURL(selectedImage);
-    setImageFile(selectedImage);
+    const selectedImageUrl = URL.createObjectURL(file);
+    setImageFile(file);
     setPreviewImageUrl(selectedImageUrl);
   };
 
-  return { imageFile, previewImageUrl, loadImageFile };
+  return { previewImageUrl, loadImageFile };
 }
