@@ -12,3 +12,5 @@ export const MONTHS = [
   '11월',
   '12월',
 ] as const;
+
+export const ALLOWED_IMAGE_EXTENSION = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
