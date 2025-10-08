@@ -10,6 +10,7 @@ export default [
   ...tseslint.configs.recommended,
   {
     files: ['**/*.{ts,tsx}'],
+    ignores: ['vite-env.d.ts'],
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
@@ -43,10 +44,6 @@ export default [
         {
           selector: ['typeLike'],
           format: ['PascalCase'],
-          // custom: {
-          //   regex: '^T$|Type$|Props$',
-          //   match: true,
-          // },
         },
         {
           selector: 'interface',

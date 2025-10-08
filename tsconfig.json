@@ -14,13 +14,13 @@
     "noEmit": true,
     "jsx": "preserve",
     "allowJs": true,
-    /* Linting */
+    "types": ["vite/client", "vite-plugin-svgr/client"],
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "incremental": true
   },
-  "include": ["./src"],
+  "include": ["./src", "vite-env.d.ts", "svg.d.ts"],
   "exclude": ["./node_modules"]
 }
